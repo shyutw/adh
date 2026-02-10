@@ -4,13 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        /* 初始狀態：隱藏內容區塊 */
+        #protected-content {
+            display: none;
+        }
+        /* 登入區塊的簡易樣式 */
+        #login-area {
+            text-align: center;
+            margin-top: 50px;
+            font-family: Arial, sans-serif;
+        }
+        input {
+            padding: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <ul>
-        <li>test</li>
-        <li>test 2026.02.10</li>
-        <li>網址：<a href="https://shyutw.github.io/adh" target="_blank">https://shyutw.github.io/adh</a></li>
-    </ul>
+
+    <div id="login-area">
+        <h3>請輸入密碼以檢視內容</h3>
+        <input type="password" id="passwordInput" placeholder="請輸入密碼">
+        <button onclick="checkPassword()">送出</button>
+    </div>
+
+    <div id="protected-content">
+        <ul>
+            <li>test</li>
+            <li>test 2026.02.10</li>
+            <li>網址：<a href="https://shyutw.github.io/adh" target="_blank">https://shyutw.github.io/adh</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var input = document.getElementById("passwordInput").value;
+            // 這裡設定密碼為 123
+            if (input === "123") {
+                // 密碼正確：隱藏登入框，顯示內容
+                document.getElementById("login-area").style.display = "none";
+                document.getElementById("protected-content").style.display = "block";
+            } else {
+                // 密碼錯誤
+                alert("密碼錯誤，請重試！");
+                document.getElementById("passwordInput").value = ""; // 清空輸入框
+            }
+        }
+    </script>
 </body>
-    
 </html>
